@@ -1,7 +1,5 @@
 {
-    "bd":{
-        "alunos":{},
-        "personalTrainers":{},
-        "treinos":{}
-    }
+    "alunos":[],
+    "personalTrainers":[],
+    "treinos":[]   
 }
