@@ -25,40 +25,79 @@
 
     </header>
 
-    <!-- Principal -->
-    <main>
-        <section>
-        <h2 id="boasVindas"></h2>
-        <p>Área do aluno.</p>
-        </section>
-    </main>
+   <!-- Principal -->
+<main>
+  <section>
+    <h2 id="boasVindas"></h2>
+    <p>Área do aluno.</p>
+  </section>
 
-    <!-- Script -->
-    <script>
-        // Obter dados do LocalStorage
-        const obj = localStorage.getItem("usuario");
+  <!-- Treinos do aluno -->
+  <section>
+    <h3>Seus Treinos</h3>
+    <ul id="listaTreinos"></ul>
+  </section>
+</main>
 
-        // Verifica se existe o LocalStorage
-        if(!obj){
-            window.location.href = "index.html";
-        }
+<!-- Script -->
+<script>
+  const API_URL = "https://maxfit-v0z3.onrender.com/treinos";
 
-        // Converter obj String para JSON
-        const usuario = JSON.parse(obj);
+  // Obter dados do LocalStorage
+  const obj = localStorage.getItem("usuario");
 
-        // Exibir uma mensagem de boas-vindas
-        const boasVindas = document.getElementById("boasVindas");
+  // Verifica se existe o LocalStorage
+  if (!obj) {
+    window.location.href = "index.html";
+  }
 
-        boasVindas.innerText = `Seja bem-vindo(a) ${usuario.nome}`
+  // Converter obj String para JSON
+  const usuario = JSON.parse(obj);
 
-        // Função para sair do sistema
-        const sair = () => {
-            // Remover dados do LocalStorage
-            localStorage.removeItem("usuario");
+  // Exibir mensagem de boas-vindas
+  const boasVindas = document.getElementById("boasVindas");
+  boasVindas.innerText = `Seja bem-vindo(a) ${usuario.nome}`;
 
-            // Redirecionamento
-            window.location.href = "index.html";
-        }
-    </script>
+  // Referência à lista
+  const listaTreinos = document.getElementById("listaTreinos");
+
+  // Função para carregar os treinos do aluno logado
+  async function carregarTreinosAluno() {
+    listaTreinos.innerHTML = "<li>Carregando...</li>";
+    try {
+      // Busca os treinos do aluno específico
+      const resposta = await fetch(`${API_URL}?aluno=${encodeURIComponent(usuario.nome)}`);
+      const treinos = await resposta.json();
+
+      if (treinos.length === 0) {
+        listaTreinos.innerHTML = "<li>Nenhum treino encontrado para você.</li>";
+        return;
+      }
+
+      listaTreinos.innerHTML = "";
+      treinos.forEach(treino => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <strong>Instrutor:</strong> ${treino.instrutor}<br>
+          <strong>Descrição:</strong> ${treino.descricao}<br>
+        `;
+        listaTreinos.appendChild(li);
+      });
+    } catch (erro) {
+      console.error(erro);
+      listaTreinos.innerHTML = "<li>Erro ao carregar seus treinos.</li>";
+    }
+  }
+
+  // Carregar treinos ao abrir a página
+  carregarTreinosAluno();
+
+  // Função para sair do sistema
+  const sair = () => {
+    localStorage.removeItem("usuario");
+    window.location.href = "index.html";
+  };
+</script>
+
 </body>
 </html>
