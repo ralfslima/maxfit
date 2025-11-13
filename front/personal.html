@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxFit - Sistema para treinos</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+
+        <!-- Título -->
+        <h1>Max Fit</h1>
+        <img src="imagens/logo.png" alt="Logo Max Fit">
+
+        <!-- Menu -->
+        <nav>
+            <ul>
+                <li><a href="#" onclick="sair()">Sair</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-- Principal -->
+    <main>
+        <section>
+        <h2 id="boasVindas"></h2>
+        <p>Área do personal.</p>
+        <p>Na API existe a rota treinos, onde você pode selecionar, cadastrar, alterar, remover os treinos dos alunos.</p>
+        <p>Link da API para trabalhar com os treinos: https://maxfit-v0z3.onrender.com/treinos</p>
+        </section>
+    </main>
+
+    <!-- Script -->
+    <script>
+        // Obter dados do LocalStorage
+        const obj = localStorage.getItem("usuario");
+
+        // Verifica se existe o LocalStorage
+        if(!obj){
+            window.location.href = "index.html";
+        }
+
+        // Converter obj String para JSON
+        const usuario = JSON.parse(obj);
+
+        // Exibir uma mensagem de boas-vindas
+        const boasVindas = document.getElementById("boasVindas");
+
+        boasVindas.innerText = `Seja bem-vindo(a) ${usuario.nome}`
+
+        // Função para sair do sistema
+        const sair = () => {
+            // Remover dados do LocalStorage
+            localStorage.removeItem("usuario");
+
+            // Redirecionamento
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+/* Body */
+body {
+    margin: 0; 
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+header {
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 20px;
+}
+
+h1 {
+    color: orange;
+    font-weight: bold;
+    font-size: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0; 
+    text-align: center; 
+}
+
+header img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain; 
+    margin: 0; 
+}
+
+nav {
+    color: orange; 
+    font-weight: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px;
+}
+
+nav ul li a {
+    color: orange;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: lightgray;
+}
+
+/* Principal */
+main {
+    padding: 20px;
+    text-align: center; 
+}
+
+main section {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+main img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+button {
+    background-color: orange; 
+    color: white; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 1.1em;
+    font-weight: bold; 
+    transition: background-color 0.3s ease;
+    margin-top: 15px; 
+}
+
+/* Efeito ao passar o mouse (hover) */
+button:hover {
+    background-color: darkorange;
+}
+
+/* Efeito ao clicar (active) */
+button:active {
+    background-color: rgb(200, 80, 0); /* Cor um pouco mais escura quando o botão é clicado */
+    transform: translateY(1px); /* Pequeno movimento para baixo para dar a sensação de clique */
+}
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  button,
+  .btn-social-google,
+  .btn-social-facebook,
+  .btn-entrar-maxfit {
+    width: 100%;
+    font-size: 1em;
+    padding: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* Contato */
+.form-contato{
+    text-align: left;
+}
+
+.form-contato input{
+    width: 97%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #999;
+}
+
+.form-contato textarea{
+    width: 97%;
+    margin-bottom: 20px;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #999;
+}
+
+/* Acesso */
+.container-acesso {
+    font-family: 'Arial', sans-serif;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.acesso {
+    background-color: #fff;
+    border-radius: 36px;
+    width: 360px;
+    max-width: 100%;
+    height: 640px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acesso .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.acesso .logo {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.acesso h1 {
+    color: #ff6b00;
+    font-size: 1.5em;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.acesso .subtitulo {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+/* Botões */
+.acesso .btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.acesso .btn.laranja {
+    background-color: #ff6b00;
+}
+
+.acesso .btn.laranja:hover {
+    background-color: #e65a00;
+    transform: translateY(-2px);
+}
+
+.acesso .btn.marrom {
+    background-color: #994d00;
+}
+
+.acesso .btn.marrom:hover {
+    background-color: #7a3d00;
+    transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .acesso {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .acesso .container {
+        padding: 20px;
+    }
+
+    .acesso h1 {
+        font-size: 1.3em;
+    }
+
+    .acesso .subtitulo {
+        font-size: 0.95em;
+    }
+
+    .acesso .btn {
+        font-size: 0.95em;
+    }
+}
+
+/* Entrar */
+.form-entrar{
+    text-align: left;
+}
+
+.form-entrar input{
+    width: 97%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #999;
+}
+
+.form-entrar .centralizar-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.form-entrar .centralizar-btn a{
+    margin-top: 30px;
+    color:#FF6A00;
+    text-decoration: none;
+}
+
+/* Cadastro */
+.cadastro {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.cadastro .container {
+  background: #fff;
+  width: 380px;
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  position: relative;
+}
+
+.cadastro .step-indicator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.cadastro .header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.cadastro .header img {
+  display: block;
+  margin: 0 auto 4px;
+}
+.cadastro .header h1 {
+  font-size: 24px;
+  color: #ff6b35;
+}
+
+.cadastro .user-type {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 24px;
+}
+
+.cadastro .user-type-option {
+  text-align: center;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  background: #fff;
+}
+
+.cadastro .user-type-option.selected {
+  border-color: #ff6b35;
+  background: rgba(255, 107, 53, 0.1);
+}
+
+.cadastro .user-type-option input {
+  display: none;
+}
+
+.cadastro .user-type-option label {
+  display: block; /* Aumenta área de clique */
+  padding: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.4;
+}
+
+.cadastro form {
+  margin-bottom: 16px;
+}
+.cadastro .form-group {
+  margin-bottom: 16px;
+}
+.cadastro .form-group input {
+  width: 90%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.cadastro .form-group input[readonly] {
+  background: #e9e9e9;
+  cursor: pointer;
+}
+
+.cadastro .btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.cadastro .btn:hover {
+  background: linear-gradient(135deg, #f7931e, #ff6b35);
+}
+
+.cadastro .link {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ff6b35; /* atualizado para melhor contraste */
+  text-decoration: none;
+}
+.cadastro .link:hover {
+  text-decoration: underline;
+}
+
+.cadastro .success-screen {
+  text-align: center;
+  padding: 32px 16px;
+  color: #fff;
+}
+.cadastro .check-icon {
+  font-size: 48px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.cadastro .success-screen h2 {
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.cadastro .success-screen p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .cadastro .container {
+    padding: 16px;
+    width: 95%;
+    border-radius: 8px;
+  }
+
+  .cadastro .header h1 {
+    font-size: 20px;
+  }
+
+  .cadastro .form-group input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .cadastro .btn {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .cadastro .success-screen h2 {
+    font-size: 18px;
+  }
+
+  .cadastro .success-screen p {
+    font-size: 13px;
+  }
+
+  .cadastro .step-indicator {
+    font-size: 12px;
+    top: 12px;
+    right: 12px;
+  }
+
+  .cadastro .user-type-option label {
+    font-size: 16px;
+  }
+}

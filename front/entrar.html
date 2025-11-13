@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxFit - Sistema para treinos</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+
+        <!-- Título -->
+        <h1>Max Fit</h1>
+        <img src="imagens/logo.png" alt="Logo Max Fit">
+
+        <!-- Menu -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="acesso.html">Entrar</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-- Principal -->
+    <main class="form-entrar">
+       <section>
+            <form>
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail" required>
+
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required>
+
+                <div class="centralizar-btn">
+                    <button type="submit" style="background-color:#FF6A00;border:none">Entrar</button>
+                </div>
+            </form>
+            
+            <div class="centralizar-btn">
+                <a href="cadastro.html">Criar conta</a>
+            </div>
+       </section>
+    </main>
+
+    <!-- Script -->
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    if (!email || !senha) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    try {
+      // URLs da API
+      const urlAlunos = "https://maxfit-v0z3.onrender.com/alunos";
+      const urlPersonais = "https://maxfit-v0z3.onrender.com/personalTrainers";
+
+      // 🔹 Busca simultânea das duas rotas
+      const [resAlunos, resPersonais] = await Promise.all([
+        fetch(urlAlunos),
+        fetch(urlPersonais)
+      ]);
+
+      if (!resAlunos.ok || !resPersonais.ok) {
+        throw new Error("Erro ao acessar a API.");
+      }
+
+      const [alunos, personalTrainers] = await Promise.all([
+        resAlunos.json(),
+        resPersonais.json()
+      ]);
+
+      // 🔍 Procura o usuário nas duas listas
+      const aluno = alunos.find(a => a.email === email && a.senha === senha);
+      const personal = personalTrainers.find(p => p.email === email && p.senha === senha);
+
+      if (aluno) {
+        // ✅ Login de aluno
+        const obj = JSON.stringify({ nome: aluno.nome, tipo: "aluno" });
+        localStorage.setItem("usuario", obj);
+
+        alert(`Bem-vindo(a), ${aluno.nome}!`);
+        window.location.href = "aluno.html";
+      } 
+      else if (personal) {
+        // ✅ Login de personal trainer
+        const obj = JSON.stringify({ nome: personal.nome, tipo: "personal" });
+        localStorage.setItem("usuario", obj);
+
+        alert(`Bem-vindo(a), ${personal.nome}!`);
+        window.location.href = "personal.html";
+      } 
+      else {
+        // ❌ Nenhum usuário encontrado
+        alert("E-mail ou senha inválidos.");
+      }
+
+    } catch (erro) {
+      console.error("Erro ao realizar login:", erro);
+      alert("Erro de conexão com o servidor. Tente novamente mais tarde.");
+    }
+  });
+});
+    </script>
+</body>
+</html>
